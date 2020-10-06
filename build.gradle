@@ -1,0 +1,47 @@
+buildscript {
+    // ext는 build.gradle에서 사용하는 전역변수를 설정하겠다는 의미.
+    ext {
+        springBootVersion = '2.3.3.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+// https://spring.io/guides/gs/spring-boot/ 에서 그냥 갖다 사용해도됨.
+/* 책을보고 진행하여 해당 부분은 사용 안함
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management'
+}
+*/
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.funny.jhdbkr'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    //jcenter() : 라이브러리 업로드를 간단하게 하기 위함..
+    jcenter()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    //testCompile group: 'junit', name: 'junit', version: '4.12'
+}
